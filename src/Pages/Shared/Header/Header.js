@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 
 const Header = () => {
+        const { user, logOut } = useAuth();
         return (
                 <div>
                         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top fw-bold">
@@ -17,11 +19,27 @@ const Header = () => {
                                                                         <a class="nav-link active" aria-current="page" href>Home</a>
                                                                 </Link>
                                                         </li>
-                                                        <li class="nav-item">
-                                                                <Link to="/login">
-                                                                        <div className="btn btn btn-success">Login <i class="fas fa-sign-in-alt"></i></div>
-                                                                </Link>
-                                                        </li>
+                                                        {
+                                                                user?.email ?
+                                                                        <li class="nav-item">
+                                                                                <img src={user.photoURL} className="img-fluid rounded-circle border border-3 border-dark me-3" width="40" alt="" />
+                                                                        </li> :
+                                                                        " "
+                                                        }
+                                                        {
+                                                                user?.displayName ?
+                                                                        <li class="nav-item">
+                                                                                <Link to="">
+                                                                                        <button onClick={logOut} className="btn btn btn-success">Log Out <i class="fas fa-sign-in-alt"></i></button>
+                                                                                </Link>
+                                                                        </li>
+                                                                        :
+                                                                        <li class="nav-item">
+                                                                                <Link to="/login">
+                                                                                        <button className="btn btn btn-success">Login <i class="fas fa-sign-in-alt"></i></button>
+                                                                                </Link>
+                                                                        </li>
+                                                        }
 
                                                 </ul>
                                         </div>

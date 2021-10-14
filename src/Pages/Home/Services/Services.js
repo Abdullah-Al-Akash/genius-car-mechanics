@@ -12,19 +12,21 @@ const Services = () => {
                         .then(data => setServices(data))
         }, [])
         return (
-                <Container fixed>
-                        <Box sx={{ textAlign: 'center', pt: 5, pb: 5, fontWeight: 'bold', fontSize: 36 }}>
-                                <span variant="contained" color="success">Our Services</span>
-                        </Box>
-                        <div className="row row-cols-1 row-cols-md-3 g-4">
-                                {
-                                        services.map(service => <Service
-                                                service={service}
-                                                key={service.id}
-                                        ></Service>)
-                                }
-                        </div>
-                </Container>
+                <div id="services">
+                        <Container fixed>
+                                <Box sx={{ textAlign: 'center', pt: 5, pb: 5, fontWeight: 'bold', fontSize: 36 }}>
+                                        <span variant="contained" color="success">Our Services</span>
+                                </Box>
+                                <div className="row row-cols-lg-3 row-cols-md-2 g-4">
+                                        {
+                                                services.map(service => <Service
+                                                        service={service}
+                                                        key={service.id}
+                                                ></Service>)
+                                        }
+                                </div>
+                        </Container>
+                </div>
         );
 };
 

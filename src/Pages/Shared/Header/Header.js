@@ -18,13 +18,9 @@ const Header = () => {
                                                                 </Link>
                                                         </li>
                                                         <li class="nav-item">
-                                                                <a class="nav-link active" aria-current="page" href="#services">Services</a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                                <a class="nav-link active" aria-current="page" href="#experts">Our Experts</a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                                <div className="btn btn btn-success">Login</div>
+                                                                <Link to="/login">
+                                                                        <div className="btn btn btn-success">Login <i class="fas fa-sign-in-alt"></i></div>
+                                                                </Link>
                                                         </li>
 
                                                 </ul>

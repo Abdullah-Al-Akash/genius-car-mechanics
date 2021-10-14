@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import { HashLink } from 'react-router-hash-link';
+
 
 const Header = () => {
         const { user, logOut } = useAuth();
@@ -18,6 +20,17 @@ const Header = () => {
                                                                 <Link style={{ textDecoration: 'none' }} exact to="/home">
                                                                         <a class="nav-link active" aria-current="page" href>Home</a>
                                                                 </Link>
+                                                        </li>
+                                                        <li class="nav-item">
+
+                                                                <HashLink style={{ textDecoration: 'none' }} exact to="/#services">
+                                                                        <a class="nav-link active" aria-current="page" href>Services</a>
+                                                                </HashLink>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                                <HashLink style={{ textDecoration: 'none' }} exact to="/#experts">
+                                                                        <a class="nav-link active" aria-current="page" href>Our Experts</a>
+                                                                </HashLink>
                                                         </li>
                                                         {
                                                                 user?.email ?

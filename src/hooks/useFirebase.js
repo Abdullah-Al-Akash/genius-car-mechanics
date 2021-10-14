@@ -6,16 +6,19 @@ initializeAuthentication()
 
 const useFirebase = () => {
         const [user, setUser] = useState({});
+        const [isLoading, setIsLoading] = useState(true);
 
         const auth = getAuth();
         const googleProvider = new GoogleAuthProvider();
 
         const signInUsingGoogle = () => {
+                setIsLoading(true);
                 signInWithPopup(auth, googleProvider)
                         .then(result => {
                                 console.log(result.user);
                                 setUser(result.user)
                         })
+                        .finally(() => setIsLoading(false))
 
         }
 
@@ -28,22 +31,26 @@ const useFirebase = () => {
                         else {
                                 setUser({})
                         }
+                        setIsLoading(false);
                 });
                 return unsubscribe;
         }, [])
 
         // LogOut Function:
         const logOut = () => {
+                setIsLoading(true);
                 signOut(auth)
                         .then(() => {
 
                         })
+                        .finally(() => setIsLoading(false))
         }
 
         return {
                 signInUsingGoogle,
                 logOut,
-                user
+                user,
+                isLoading
         }
 }
 
